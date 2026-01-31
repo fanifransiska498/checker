@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Stripe Checkout Autofill",
+  "version": "0.1.0",
+  "description": "Autofill Stripe checkout fields with saved data.",
+  "action": {
+    "default_title": "Stripe Autofill",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
