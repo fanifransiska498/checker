@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stripe Autofill</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Stripe Autofill</h1>
+        <label class="toggle">
+          <input id="enabled" type="checkbox" />
+          <span>Enable autofill</span>
+        </label>
+      </header>
+
+      <form id="settings-form">
+        <section>
+          <h2>Card</h2>
+
+          <div class="field">
+            <label for="binPrefix">BIN prefix (optional)</label>
+            <div class="row">
+              <input
+                id="binPrefix"
+                type="text"
+                inputmode="numeric"
+                placeholder="e.g. 424242"
+              />
+              <button type="button" id="generateCard">Generate</button>
+            </div>
+            <p class="hint">Use BIN to generate a test card number.</p>
+          </div>
+
+          <div class="field">
+            <label for="cardNumber">Card number</label>
+            <input
+              id="cardNumber"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              placeholder="4242 4242 4242 4242"
+            />
+          </div>
+
+          <div class="field grid-3">
+            <div>
+              <label for="expMonth">Exp month</label>
+              <input
+                id="expMonth"
+                type="text"
+                inputmode="numeric"
+                placeholder="MM"
+              />
+            </div>
+            <div>
+              <label for="expYear">Exp year</label>
+              <input
+                id="expYear"
+                type="text"
+                inputmode="numeric"
+                placeholder="YY or YYYY"
+              />
+            </div>
+            <div>
+              <label for="cvc">CVC</label>
+              <input id="cvc" type="text" inputmode="numeric" placeholder="123" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="fullName">Full name</label>
+            <input id="fullName" type="text" placeholder="Name on card" />
+          </div>
+        </section>
+
+        <section>
+          <h2>Contact</h2>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="email@example.com" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" type="tel" placeholder="+1 555 123 4567" />
+          </div>
+        </section>
+
+        <section>
+          <h2>Billing address</h2>
+
+          <div class="field">
+            <label for="addressLine1">Address line 1</label>
+            <input id="addressLine1" type="text" placeholder="Street address" />
+          </div>
+
+          <div class="field">
+            <label for="addressLine2">Address line 2</label>
+            <input
+              id="addressLine2"
+              type="text"
+              placeholder="Apartment, suite, etc."
+            />
+          </div>
+
+          <div class="field grid-2">
+            <div>
+              <label for="city">City</label>
+              <input id="city" type="text" placeholder="City" />
+            </div>
+            <div>
+              <label for="state">State/Province</label>
+              <input id="state" type="text" placeholder="State" />
+            </div>
+          </div>
+
+          <div class="field grid-2">
+            <div>
+              <label for="zip">Postal code</label>
+              <input id="zip" type="text" placeholder="ZIP" />
+            </div>
+            <div>
+              <label for="country">Country</label>
+              <input id="country" type="text" placeholder="US" />
+            </div>
+          </div>
+        </section>
+
+        <div class="actions">
+          <button type="submit" class="primary">Save</button>
+          <button type="button" id="fillNow">Fill current page</button>
+        </div>
+      </form>
+
+      <p id="status" role="status" aria-live="polite"></p>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
